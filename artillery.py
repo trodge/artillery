@@ -122,7 +122,7 @@ class Particle:
                 dts.add(dt)
         else:
             pygame.draw.circle(s, self.color, (int(self.x), int(self.y)), 2, 1)
-            r = pygame.Rect(self.x - 2, self.y - 2, 4, 4)
+            r = pygame.Rect(int(self.x) - 2, int(self.y) - 2, 4, 4)
             dts.update(tiles_at(r, tls))
 
 
@@ -131,8 +131,8 @@ class FloatText:
         self.font = f
         self.color = c
         self.set_text(t)
-        self.r = pygame.Rect(x - int(self.s.get_width() / 2),
-                             y - int(self.s.get_height() / 2),
+        self.r = pygame.Rect(int(x - self.s.get_width() / 2),
+                             int(y - self.s.get_height() / 2),
                              self.s.get_width(), self.s.get_height())
 
     def set_text(self, t):
@@ -147,8 +147,8 @@ class FloatText:
 class Piece:
     def __init__(self, x, y, i, f):
         self.id = i
-        self.r = pygame.Rect(x - int(PIECE_WIDTH / 2),
-                             y - int(PIECE_HEIGHT / 2),
+        self.r = pygame.Rect(int(x - PIECE_WIDTH / 2),
+                             int(y - PIECE_HEIGHT / 2),
                              PIECE_WIDTH, PIECE_HEIGHT)
         self.x = x
         self.y = y
@@ -271,8 +271,8 @@ class Piece:
             dy = self.dy * e
             self.x += dx
             self.y += dy
-            self.r.x = self.x - int(self.r.width / 2)
-            self.r.y = self.y - int(self.r.height / 2)
+            self.r.x = int(self.x - self.r.width / 2)
+            self.r.y = int(self.y - self.r.height / 2)
             for t in self.text:
                 t.r.x += dx
                 t.r.y += dy
